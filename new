@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -z "$1" ] ; then
+  echo "Usage: new pxx"
+  echo $1
+elif [ -e $1.hs ] ; then
+    echo $1 already exists
+else
+  cp p00.hs $1.hs
+  rm jpd.hs;ln -s $1.hs jpd.hs
+  ls -l jpd.hs
+fi

@@ -1,3 +1,4 @@
+import Data.List
 
 primes :: [Integer]
 primes = 2 : 3 : [x | x<- [5,7..], isPrime primes x ]
@@ -6,7 +7,6 @@ isPrime (p:ps) x
     | p^2 > x   = True
     | otherwise = if rem x p == 0 then False else isPrime ps x
 
--- Triangle Numbers - 1 3 6 10 15 - nth element = sum [1..n]
 tris = map (\x-> quot ((x+1)*x) 2) [1..]
 
 -- Prime factors
@@ -27,7 +27,15 @@ tfactors' (f:fs) oldf dupcnt tot
     | f == oldf = tfactors' fs oldf (dupcnt+1) tot
     | otherwise = tfactors' fs f 2 (dupcnt*tot)
 
+proc x = do
+    let f = factors x
+	t = tfactors f
+    if t >= 500 then
+	putStrLn $ "x = " ++ show x ++ " - factors = " ++ show f
+	    ++ " ==> " ++ show t
+    else return ()
+
 main = do
-    print $ sum $ take 1000 primes
-    putStrLn "hey"
+    --print $ nub $ subsequences $ factors 90
+    mapM proc (take 20000 tris)
 
