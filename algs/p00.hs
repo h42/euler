@@ -10,7 +10,7 @@ isPrime (p:ps) x
 tris = map (\x-> quot ((x+1)*x) 2) [1..]
 
 -- Prime factors
-factors x' = pf x' primes [] where
+pfactors x' = pf x' primes [] where
     pf x (p:ps) fs
 	| p > x    = fs
 	| r == 0   = pf q (p:ps) (p:fs)

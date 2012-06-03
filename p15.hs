@@ -2,6 +2,7 @@
 
 
 -- 40 choose 20 (40! / 20! * 20!) is BEST
+main = print $ product [21..40] `quot` $ product [2..20]
 
 -- Brute Force - VERY Slow !!! but FUN
 data Dir = D Int Int | R Int Int deriving (Show)
@@ -18,4 +19,4 @@ gfunc (R !x !y : ds)
     | y == n    = 1 + gfunc ds
     | otherwise = gfunc [D x' y | x' <- [x+1..n]] + gfunc ds
 
-main = print $ gfunc [(R 0 0),(D 0 0)]
+main2 = print $ gfunc [(R 0 0),(D 0 0)]
