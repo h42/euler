@@ -4,7 +4,7 @@ import Control.Monad
 p999 = takeWhile (<1000) primes
 
 coefs :: [(Int,Int)]
-coefs = [(a,b) | b<-p999, a<-[-999,-997..0] ]
+coefs = [(a,b) | b<-p999, a<-[-999,-997..999] ]
 
 checkquads (a,b) = checkquad2 a b 0
 checkquad2 a b n =
