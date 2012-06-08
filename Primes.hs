@@ -1,6 +1,10 @@
 module Primes (
     primes
     ,isPrime
+    ,num2list
+    ,list2num
+    ,rotateList
+    ,rotateInt
 ) where
 
 primes :: [Int]
@@ -26,4 +30,16 @@ isPrime (p:ps) x
     | rem x p == 0 || x<2 = False
     | p*p > x      = True
     | otherwise    = isPrime ps x
+
+num2list n = num2list' n []
+num2list' 0 xs = xs
+num2list' n xs = num2list' q (r:xs) where (q,r) = quotRem n 10
+
+list2num xs = foldl (\a x->a*10+x) 0 xs  -- works for positive numbers
+
+rotateList (x:xs) = xs++[x]
+
+rotateInt x e = y where
+    (q,r) = quotRem x 10
+    y = q + r * 10^e
 
