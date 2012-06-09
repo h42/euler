@@ -1,1 +1,1 @@
-p38.hs
+euler.hs

@@ -1,12 +1,15 @@
 HSFLAGS = -fwarn-name-shadowing  -XOverloadedStrings
 CLG = $(HSFLAGS) -dynamic --make -O2 -threaded -rtsopts
 
-PROGS=Primes.o jpd
+PROGS=Primes.o Euler.o jpd
 
 all:$(PROGS)
 
-jpd : jpd.hs Primes.o
+jpd : jpd.hs Primes.o Euler.o
 	ghc $(CLG) -o jpd jpd.hs
+
+%.o : %.hs
+	ghc $(CLG) -c -o $@ $<
 
 % : %.hs
 	ghc $(CLG) -o $@ $<
