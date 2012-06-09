@@ -21,11 +21,14 @@ primes' gen  = ans where
 	| pb        = b : primes' (gen+6)
 	| otherwise = primes' (gen+6)
 
-isPrime2 (p:ps) x -- does not include <2 check that exported version has
+-- does not include <2 check that exported version has
+isPrime2 (ps) 2 = True
+isPrime2 (p:ps) x
     | rem x p == 0 = False
     | p*p > x      = True
     | otherwise    = isPrime ps x
 
+isPrime (ps) 2 = True
 isPrime (p:ps) x
     | rem x p == 0 || x<2 = False
     | p*p > x      = True
