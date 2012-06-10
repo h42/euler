@@ -11,7 +11,7 @@ elif [ -e $1.hs ] ; then
 	ls -l jpd.hs
     fi
 else
-  cp p01.hs $1.hs
+  cp p00.hs $1.hs
   rm jpd.hs;ln -s $1.hs jpd.hs
   git add $1.hs
   ls -l jpd.hs

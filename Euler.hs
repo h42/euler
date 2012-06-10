@@ -29,3 +29,12 @@ digitN x i
   where
     l = ilen x
     d = rem (quot x (10^((l-i)-1))) 10
+
+-----------------------------
+-- TRIANGLE NUMBERS
+-----------------------------
+triList = (take 100 $ 1:zipWith (+) triList [2..] :: [Int])
+elemTriList n = elem n (takeWhile (<(n+1)) triList)
+isTri n = if floor r == ceiling r then True else False where
+    r = (sqrt (1.0 + 8 * fromIntegral n) - 1) / 2
+

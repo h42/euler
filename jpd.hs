@@ -1,1 +1,1 @@
-euler.hs
+p42.hs
