@@ -1,7 +1,21 @@
 module Euler (
     ilen
     ,digitN
+    ,triList
+    ,elemTriList
+    ,isTri
+    ,num2list
+    ,list2num
 ) where
+
+-----------------------------
+-- NUM2LIST / LIST2NUM
+-----------------------------
+num2list n = num2list' n []
+num2list' 0 xs = xs
+num2list' n xs = num2list' q (r:xs) where (q,r) = quotRem n 10
+list2num :: Num a => [a] -> a
+list2num xs = foldl (\a x->a*10+x) 0 xs  -- works for positive numbers
 
 -----------------------------
 -- ILEN
@@ -29,6 +43,8 @@ digitN x i
   where
     l = ilen x
     d = rem (quot x (10^((l-i)-1))) 10
+
+
 
 -----------------------------
 -- TRIANGLE NUMBERS
