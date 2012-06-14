@@ -6,6 +6,8 @@ module Euler (
     ,isTri
     ,num2list
     ,list2num
+    ,fac
+    ,comb
 ) where
 
 -----------------------------
@@ -49,8 +51,19 @@ digitN x i
 -----------------------------
 -- TRIANGLE NUMBERS
 -----------------------------
-triList = (take 100 $ 1:zipWith (+) triList [2..] :: [Int])
+triList = (1:zipWith (+) triList [2..] :: [Int])
 elemTriList n = elem n (takeWhile (<(n+1)) triList)
 isTri n = if floor r == ceiling r then True else False where
     r = (sqrt (1.0 + 8 * fromIntegral n) - 1) / 2
+
+-----------------------------
+-- COMBINATORICS
+-----------------------------
+fac n
+    | n>1 = product [2..n]
+    | otherwise = 1
+
+comb n r
+    | n>r = product [n,n-1..n-r+1] `quot` (fac r)
+    | otherwise = 1
 

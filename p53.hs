@@ -2,7 +2,9 @@ fac n
     | n>1 = product [2..n]
     | otherwise = 1
 
-comb n r = fac n `quot` (fac r * fac (n-r))
+comb n r
+    | n>r = product [n,n-1..n-r+1] `quot` (fac r)
+    | otherwise = 1
 
 main = do
     print $ length $
