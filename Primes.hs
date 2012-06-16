@@ -1,3 +1,4 @@
+{-# LANGUAGE BangPatterns#-}
 module Primes (
     primes
     ,isPrime
@@ -15,7 +16,7 @@ primes' gen  = ans where
     b = gen + 1
     pa = isPrime primes a
     pb = isPrime primes b
-    ans
+    !ans
 	| pa && pb  = a : b : primes' (gen+6)
 	| pa        = a : primes' (gen+6)
 	| pb        = b : primes' (gen+6)
