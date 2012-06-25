@@ -1,11 +1,12 @@
 module Euler (
     ilen
+    ,num2list
+    ,list2num
     ,digitN
+    ,isSquare
     ,triList
     ,elemTriList
     ,isTri
-    ,num2list
-    ,list2num
     ,fac
     ,comb
 ) where
@@ -18,6 +19,19 @@ num2list' 0 xs = xs
 num2list' n xs = num2list' q (r:xs) where (q,r) = quotRem n 10
 list2num :: Num a => [a] -> a
 list2num xs = foldl (\a x->a*10+x) 0 xs  -- works for positive numbers
+
+-----------------------------
+-- IS SQUARE
+-----------------------------
+isSquare xlow xhigh y2  -- returns Left x for False ; Right sqrt for True
+    | xhigh - xlow < 2 = Left xlow
+    | x2 < y2 = isSquare x xhigh y2
+    | x2 > y2 = isSquare xlow x y2
+    | otherwise = Right x
+  where
+    x = quot (xhigh + xlow) 2
+    x2 = x * x
+
 
 -----------------------------
 -- ILEN
