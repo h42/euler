@@ -2,8 +2,7 @@ import Data.List
 import Control.Monad
 import Primes
 
-
-f = do
+main = print $ minimum $ do
     let lm = floor $ sqrt $ 10000000
 	ps = takeWhile (<100000) primes
     x <- takeWhile (<lm) ps
@@ -13,5 +12,3 @@ f = do
 	ratio = fromIntegral n / fromIntegral factors
     guard (n<10000000 && (sort $ show n) == (sort $ show factors))
     return (ratio,n,factors,x,y)
-
-main = print $ minimum f
