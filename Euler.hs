@@ -81,3 +81,13 @@ comb n r
     | n>r = product [n,n-1..n-r+1] `quot` (fac r)
     | otherwise = 1
 
+{-
+combinations k n = combinationsOf k [0..n-1] where
+    combinationsOf 0 _ = [[]]
+    combinationsOf _ [] = []
+    combinationsOf k' (x:xs) = map (x:)
+	(combinationsOf (k'-1) xs) ++ combinationsOf k' xs
+
+ps = concatMap permutations (combinations 7 10)
+-}
+
