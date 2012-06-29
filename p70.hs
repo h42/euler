@@ -2,26 +2,16 @@ import Data.List
 import Control.Monad
 import Primes
 
-comp x y = (sort $ show x) == (sort $ show y)
 
-phi x y n = n - qx - qy + 1  where
-    qx = quot n x
-    qy = quot n y
-
-quess = 1.1001389239706996 -- from example
-
-f plow phigh = do
-    x <- plow
-    y <- phigh
+f = do
+    let lm = floor $ sqrt $ 10000000
+	ps = takeWhile (<100000) primes
+    x <- takeWhile (<lm) ps
+    y <- dropWhile (<lm) ps
     let n = x*y
-    guard (n<10000000)
-    let factors = phi x y n
+	factors = n - quot n x - quot n y + 1
 	ratio = fromIntegral n / fromIntegral factors
-    guard (ratio < quess && comp n factors)
-    return (ratio,n,factors)
+    guard (n<10000000 && (sort $ show n) == (sort $ show factors))
+    return (ratio,n,factors,x,y)
 
-main = do
-    let ps = takeWhile (<1000000) primes
-	plow = takeWhile (<3163) ps
-	phigh = dropWhile (<3163) ps
-    print $ minimum $ f plow phigh
+main = print $ minimum f
