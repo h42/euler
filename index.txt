@@ -1,1 +1,5 @@
 spirals - 28,58
+p71 - reduced fraction, farey prior
+p72 - reduced fractions, totient, distinct factors, farey_sum
+p73 - reduced fractions, farey prior (brute force), farey next
+p74 -
