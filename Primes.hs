@@ -6,6 +6,9 @@ module Primes (
     ,rotateInt
     ,primeSet
     ,gotPrime
+    ,pfactors
+    ,dpfactors
+    ,totient
 ) where
 
 import qualified Data.IntSet as S
@@ -13,7 +16,18 @@ import qualified Data.IntSet as S
 -----------------------------
 -- Factors
 -----------------------------
-dfactors zn = dfactors' primes [] zn where  -- Distinct Prime Factors
+pfactors zn = dfactors' primes [] zn where  -- Prime Factors
+    dfactors' pps@(p:ps) as n
+	| n==1 = as
+	| p*p > zn = if n /= zn then n:as else as
+	| otherwise = dfactors' ps' as' n'
+       where
+	    (q,r) = quotRem n p
+	    as' = if r==0 then p:as else as
+	    n' = if r==0 then q else n
+	    ps' = if r==0 then pps else ps
+
+dpfactors zn = dfactors' primes [] zn where  -- Distinct Prime Factors
     dfactors' pps@(p:ps) as n
 	| n==1 = as
 	| p*p > zn = if n /= zn then n:as else as
@@ -26,7 +40,7 @@ dfactors zn = dfactors' primes [] zn where  -- Distinct Prime Factors
 	    ps' = if r==0 then pps else ps
 
 totient n = if not (null zfs) then tot zfs n else n-1 where
-    zfs = dfactors n
+    zfs = dpfactors n
     tot [] ans = ans
     tot (f:fs) ans = tot fs (quot (ans * (f-1)) f)
 
