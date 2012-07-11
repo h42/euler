@@ -9,3 +9,6 @@ p75 - count number of pytagorean triples that have only 1 perimeter
 p76 - integer partition - see p78 number of combinations of ints that add up to 100
 p77 - partition with sum of primes - like 76,78
 p78 - integer partition - euler generator function - pentogonal numbers
+p79 - worked out by hand
+p80 - sqr roots - used convergents of continued fractions of sqr roots
+p81 -
