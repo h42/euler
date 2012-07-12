@@ -11,4 +11,6 @@ p77 - partition with sum of primes - like 76,78
 p78 - integer partition - euler generator function - pentogonal numbers
 p79 - worked out by hand
 p80 - sqr roots - used convergents of continued fractions of sqr roots
-p81 -
+p81 - minimal path through matrix
+p82 - harder 81
+p83 - hardest 81
