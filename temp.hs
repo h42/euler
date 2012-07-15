@@ -1,10 +1,10 @@
-primes :: [Int]
-primes = 2 : 3 : [x | x<- [5,7..], isPrime x ]
+import qualified Data.Sequence as S
+import Data.Sequence (Seq,fromList,(<|),(|>))
 
-isPrime x = isPrime' primes where
-    x2 = floor $ sqrt $ fromIntegral x
-    isPrime' (p:ps)
-	| p > x2    = True
-	| otherwise = if rem x p == 0 then False else isPrime' ps
-    
-main = print $ head $ drop 100000 primes
+s = fromList [1..7]
+
+main = do
+    let s1 = (22 <| s) |> (-4)
+    print s1
+    print $ S.index s1 0
+    print $ S.drop 1 s1
