@@ -1,7 +1,6 @@
 {-# LANGUAGE BangPatterns  #-}
 import Data.Map ((!))
 import qualified Data.Map as M
-import qualified Data.Sequence as Seq
 
 msize = 80
 
@@ -47,5 +46,4 @@ check2 !(!i,!j) !m !itcost !ns = ans where
 
 main = do
     zm <- getmap
-    print $ take 20 $ drop (2*80-10) $ M.toList $ p83 zm
-    --print $ drop 6370 $ M.toList $ p83 zm
+    print $ (p83 zm) ! (80,80)
