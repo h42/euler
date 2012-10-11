@@ -17,7 +17,7 @@ sieve n = runSTUArray $ do
     return sieve
 
 main = do
-    let ps = primesUpto 100000000
-    let s = sieve 10
-    print $ s
+    let ps = primesUpto 100
+    print $ sieve 10
+    print $ ps
 

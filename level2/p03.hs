@@ -13,7 +13,5 @@ isPrime (p:ps) x
 main = do
     let pr = head $ filter ffunc $ reverse $ takeWhile (<n2) primes
 	ffunc x = rem n x == 0
-    --print $ rem n pr
-    --print $ quot n pr
     print $ pr
 
