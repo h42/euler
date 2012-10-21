@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ -z "$1" ] ; then
+  echo "Usage: new pxx"
+  echo $1
+elif [ -e $1.cc ] ; then
+    echo -n "$1 already exists - do you want to relink (y/n)? "
+    read yorn
+    if [ "$yorn" == "y" ] ; then
+	rm jpd.cc;ln -s $1.cc jpd.cc
+	ls -l jpd.cc
+    fi
+else
+  cp c01.cc $1.cc
+  rm jpd.cc;ln -s $1.cc jpd.cc
+  ls -l jpd.cc
+fi

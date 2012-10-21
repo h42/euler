@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
-static vector<int> zprimes; //shared by all classes
+static vector<long> zprimes; //shared by all classes
 
+//ccinclude
 class primes {
 public:
     primes();
@@ -13,6 +15,7 @@ public:
 private:
     int next();
 };
+//ccinclude
 
 primes::primes() {
     if (zprimes.size()==0) {
@@ -24,6 +27,10 @@ primes::primes() {
 bool primes::isprime(int x) {
     int i,p;
     if (x<4) return x<2 ? false : true;
+    if (x<=zprimes[zprimes.size()-1]) {
+	if (x%2==0 || x%3==0 || x%5==0 || x%7==0) return false;
+	return binary_search(zprimes.begin(),zprimes.end(),x);
+    }
     for (i=0;;i++) {
 	p = (*this)[i]; //get function == operator[] would be more readable
 	if (x%p==0) return false;
@@ -49,16 +56,4 @@ int primes::operator[](int x) {
     int y;
     while ((int)zprimes.size() <= x) y=next();
     return y;
-}
-
-int main() {
-    int i;
-    primes p;
-    for (i=0;i<100;i++) {
-	if (p.isprime(i)) printf("%d is prime\n",i);
-    }
-    printf("get %d\n",p[6]);
-    printf("get %d\n",p[99999]);
-    for (i=0;i<10;i++) printf("%d\n",p[i]);
-    return 0;
 }
